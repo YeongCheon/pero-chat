@@ -1,6 +1,6 @@
-#+TITLE: Proto LOL
+#+TITLE: Pero Chat
 #+AUTHOR: YeongCheon Kim
-#+DATE: 2020-04-10 23:00:00 +0900
+#+DATE: 2020-05-24 21:00:00 +0900
 
 #+BEGIN_SRC bash
 protoc -I. --go_out=plugins=grpc:gen/go *.proto
