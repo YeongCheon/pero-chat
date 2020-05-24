@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package plaza;
+
+service Plaza {
+  rpc Entry(stream Message) returns (stream Message);
+}
+
+message Message {
+  string name = 1;
+  string content = 2;
+}
