@@ -3,10 +3,14 @@ syntax = "proto3";
 package plaza;
 
 service Plaza {
-  rpc Entry(stream Message) returns (stream Message);
+  rpc Entry(stream ChatMessageRequest) returns (stream ChatMessageResponse);
 }
 
-message Message {
+message ChatMessageRequest {
+  string content = 1;
+}
+
+message ChatMessageResponse {
   string name = 1;
   string content = 2;
 }

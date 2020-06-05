@@ -24,7 +24,46 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type Message struct {
+type ChatMessageRequest struct {
+	Content              string   `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ChatMessageRequest) Reset()         { *m = ChatMessageRequest{} }
+func (m *ChatMessageRequest) String() string { return proto.CompactTextString(m) }
+func (*ChatMessageRequest) ProtoMessage()    {}
+func (*ChatMessageRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6dbb860360517e92, []int{0}
+}
+
+func (m *ChatMessageRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ChatMessageRequest.Unmarshal(m, b)
+}
+func (m *ChatMessageRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ChatMessageRequest.Marshal(b, m, deterministic)
+}
+func (m *ChatMessageRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ChatMessageRequest.Merge(m, src)
+}
+func (m *ChatMessageRequest) XXX_Size() int {
+	return xxx_messageInfo_ChatMessageRequest.Size(m)
+}
+func (m *ChatMessageRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ChatMessageRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ChatMessageRequest proto.InternalMessageInfo
+
+func (m *ChatMessageRequest) GetContent() string {
+	if m != nil {
+		return m.Content
+	}
+	return ""
+}
+
+type ChatMessageResponse struct {
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Content              string   `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -32,39 +71,39 @@ type Message struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Message) Reset()         { *m = Message{} }
-func (m *Message) String() string { return proto.CompactTextString(m) }
-func (*Message) ProtoMessage()    {}
-func (*Message) Descriptor() ([]byte, []int) {
-	return fileDescriptor_6dbb860360517e92, []int{0}
+func (m *ChatMessageResponse) Reset()         { *m = ChatMessageResponse{} }
+func (m *ChatMessageResponse) String() string { return proto.CompactTextString(m) }
+func (*ChatMessageResponse) ProtoMessage()    {}
+func (*ChatMessageResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6dbb860360517e92, []int{1}
 }
 
-func (m *Message) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Message.Unmarshal(m, b)
+func (m *ChatMessageResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ChatMessageResponse.Unmarshal(m, b)
 }
-func (m *Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Message.Marshal(b, m, deterministic)
+func (m *ChatMessageResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ChatMessageResponse.Marshal(b, m, deterministic)
 }
-func (m *Message) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Message.Merge(m, src)
+func (m *ChatMessageResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ChatMessageResponse.Merge(m, src)
 }
-func (m *Message) XXX_Size() int {
-	return xxx_messageInfo_Message.Size(m)
+func (m *ChatMessageResponse) XXX_Size() int {
+	return xxx_messageInfo_ChatMessageResponse.Size(m)
 }
-func (m *Message) XXX_DiscardUnknown() {
-	xxx_messageInfo_Message.DiscardUnknown(m)
+func (m *ChatMessageResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ChatMessageResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Message proto.InternalMessageInfo
+var xxx_messageInfo_ChatMessageResponse proto.InternalMessageInfo
 
-func (m *Message) GetName() string {
+func (m *ChatMessageResponse) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *Message) GetContent() string {
+func (m *ChatMessageResponse) GetContent() string {
 	if m != nil {
 		return m.Content
 	}
@@ -72,7 +111,8 @@ func (m *Message) GetContent() string {
 }
 
 func init() {
-	proto.RegisterType((*Message)(nil), "plaza.Message")
+	proto.RegisterType((*ChatMessageRequest)(nil), "plaza.ChatMessageRequest")
+	proto.RegisterType((*ChatMessageResponse)(nil), "plaza.ChatMessageResponse")
 }
 
 func init() {
@@ -80,15 +120,17 @@ func init() {
 }
 
 var fileDescriptor_6dbb860360517e92 = []byte{
-	// 121 bytes of a gzipped FileDescriptorProto
+	// 151 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2e, 0xc8, 0x49, 0xac,
-	0x4a, 0xd4, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x05, 0x73, 0x94, 0xcc, 0xb9, 0xd8, 0x7d,
-	0x53, 0x8b, 0x8b, 0x13, 0xd3, 0x53, 0x85, 0x84, 0xb8, 0x58, 0xf2, 0x12, 0x73, 0x53, 0x25, 0x18,
-	0x15, 0x18, 0x35, 0x38, 0x83, 0xc0, 0x6c, 0x21, 0x09, 0x2e, 0xf6, 0xe4, 0xfc, 0xbc, 0x92, 0xd4,
-	0xbc, 0x12, 0x09, 0x26, 0xb0, 0x30, 0x8c, 0x6b, 0x64, 0xc2, 0xc5, 0x1a, 0x00, 0x32, 0x41, 0x48,
-	0x9b, 0x8b, 0xd5, 0x35, 0xaf, 0xa4, 0xa8, 0x52, 0x88, 0x4f, 0x0f, 0x62, 0x3e, 0xd4, 0x3c, 0x29,
-	0x34, 0xbe, 0x06, 0xa3, 0x01, 0x63, 0x12, 0x1b, 0xd8, 0x72, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff,
-	0xff, 0xa3, 0x00, 0xb3, 0xdb, 0x8b, 0x00, 0x00, 0x00,
+	0x4a, 0xd4, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x05, 0x73, 0x94, 0xf4, 0xb8, 0x84, 0x9c,
+	0x33, 0x12, 0x4b, 0x7c, 0x53, 0x8b, 0x8b, 0x13, 0xd3, 0x53, 0x83, 0x52, 0x0b, 0x4b, 0x53, 0x8b,
+	0x4b, 0x84, 0x24, 0xb8, 0xd8, 0x93, 0xf3, 0xf3, 0x4a, 0x52, 0xf3, 0x4a, 0x24, 0x18, 0x15, 0x18,
+	0x35, 0x38, 0x83, 0x60, 0x5c, 0x25, 0x67, 0x2e, 0x61, 0x14, 0xf5, 0xc5, 0x05, 0xf9, 0x79, 0xc5,
+	0xa9, 0x42, 0x42, 0x5c, 0x2c, 0x79, 0x89, 0xb9, 0xa9, 0x50, 0xd5, 0x60, 0x36, 0xb2, 0x21, 0x4c,
+	0x28, 0x86, 0x18, 0x79, 0x73, 0xb1, 0x06, 0x80, 0x6c, 0x17, 0x72, 0xe2, 0x62, 0x75, 0xcd, 0x2b,
+	0x29, 0xaa, 0x14, 0x92, 0xd4, 0x83, 0xb8, 0x0d, 0xd3, 0x2d, 0x52, 0x52, 0xd8, 0xa4, 0x20, 0xd6,
+	0x6a, 0x30, 0x1a, 0x30, 0x26, 0xb1, 0x81, 0xfd, 0x63, 0x0c, 0x08, 0x00, 0x00, 0xff, 0xff, 0x95,
+	0xc3, 0x65, 0x77, 0xde, 0x00, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -124,8 +166,8 @@ func (c *plazaClient) Entry(ctx context.Context, opts ...grpc.CallOption) (Plaza
 }
 
 type Plaza_EntryClient interface {
-	Send(*Message) error
-	Recv() (*Message, error)
+	Send(*ChatMessageRequest) error
+	Recv() (*ChatMessageResponse, error)
 	grpc.ClientStream
 }
 
@@ -133,12 +175,12 @@ type plazaEntryClient struct {
 	grpc.ClientStream
 }
 
-func (x *plazaEntryClient) Send(m *Message) error {
+func (x *plazaEntryClient) Send(m *ChatMessageRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *plazaEntryClient) Recv() (*Message, error) {
-	m := new(Message)
+func (x *plazaEntryClient) Recv() (*ChatMessageResponse, error) {
+	m := new(ChatMessageResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -167,8 +209,8 @@ func _Plaza_Entry_Handler(srv interface{}, stream grpc.ServerStream) error {
 }
 
 type Plaza_EntryServer interface {
-	Send(*Message) error
-	Recv() (*Message, error)
+	Send(*ChatMessageResponse) error
+	Recv() (*ChatMessageRequest, error)
 	grpc.ServerStream
 }
 
@@ -176,12 +218,12 @@ type plazaEntryServer struct {
 	grpc.ServerStream
 }
 
-func (x *plazaEntryServer) Send(m *Message) error {
+func (x *plazaEntryServer) Send(m *ChatMessageResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *plazaEntryServer) Recv() (*Message, error) {
-	m := new(Message)
+func (x *plazaEntryServer) Recv() (*ChatMessageRequest, error) {
+	m := new(ChatMessageRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
