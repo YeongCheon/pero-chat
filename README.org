@@ -3,5 +3,10 @@
 #+DATE: 2020-05-24 21:00:00 +0900
 
 #+BEGIN_SRC bash
-protoc -I. --go_out=plugins=grpc:gen/go *.proto
+protoc -I. \
+       --go_out=plugins=grpc:gen/go *.proto \
+
+protoc -I. \
+       --js_out=import_style=commonjs,binary:gen/typescript \
+       --grpc-web_out=import_style=typescript,mode=grpcwebtext:gen/typescript *.proto
 #+END_SRC
