@@ -24,6 +24,37 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type EntryRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *EntryRequest) Reset()         { *m = EntryRequest{} }
+func (m *EntryRequest) String() string { return proto.CompactTextString(m) }
+func (*EntryRequest) ProtoMessage()    {}
+func (*EntryRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6dbb860360517e92, []int{0}
+}
+
+func (m *EntryRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_EntryRequest.Unmarshal(m, b)
+}
+func (m *EntryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_EntryRequest.Marshal(b, m, deterministic)
+}
+func (m *EntryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EntryRequest.Merge(m, src)
+}
+func (m *EntryRequest) XXX_Size() int {
+	return xxx_messageInfo_EntryRequest.Size(m)
+}
+func (m *EntryRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_EntryRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_EntryRequest proto.InternalMessageInfo
+
 type ChatMessageRequest struct {
 	Content              string   `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -35,7 +66,7 @@ func (m *ChatMessageRequest) Reset()         { *m = ChatMessageRequest{} }
 func (m *ChatMessageRequest) String() string { return proto.CompactTextString(m) }
 func (*ChatMessageRequest) ProtoMessage()    {}
 func (*ChatMessageRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_6dbb860360517e92, []int{0}
+	return fileDescriptor_6dbb860360517e92, []int{1}
 }
 
 func (m *ChatMessageRequest) XXX_Unmarshal(b []byte) error {
@@ -63,6 +94,45 @@ func (m *ChatMessageRequest) GetContent() string {
 	return ""
 }
 
+type BroadcastResponse struct {
+	Message              string   `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *BroadcastResponse) Reset()         { *m = BroadcastResponse{} }
+func (m *BroadcastResponse) String() string { return proto.CompactTextString(m) }
+func (*BroadcastResponse) ProtoMessage()    {}
+func (*BroadcastResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6dbb860360517e92, []int{2}
+}
+
+func (m *BroadcastResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BroadcastResponse.Unmarshal(m, b)
+}
+func (m *BroadcastResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BroadcastResponse.Marshal(b, m, deterministic)
+}
+func (m *BroadcastResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BroadcastResponse.Merge(m, src)
+}
+func (m *BroadcastResponse) XXX_Size() int {
+	return xxx_messageInfo_BroadcastResponse.Size(m)
+}
+func (m *BroadcastResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_BroadcastResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BroadcastResponse proto.InternalMessageInfo
+
+func (m *BroadcastResponse) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
 type ChatMessageResponse struct {
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Content              string   `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
@@ -75,7 +145,7 @@ func (m *ChatMessageResponse) Reset()         { *m = ChatMessageResponse{} }
 func (m *ChatMessageResponse) String() string { return proto.CompactTextString(m) }
 func (*ChatMessageResponse) ProtoMessage()    {}
 func (*ChatMessageResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_6dbb860360517e92, []int{1}
+	return fileDescriptor_6dbb860360517e92, []int{3}
 }
 
 func (m *ChatMessageResponse) XXX_Unmarshal(b []byte) error {
@@ -111,7 +181,9 @@ func (m *ChatMessageResponse) GetContent() string {
 }
 
 func init() {
+	proto.RegisterType((*EntryRequest)(nil), "plaza.EntryRequest")
 	proto.RegisterType((*ChatMessageRequest)(nil), "plaza.ChatMessageRequest")
+	proto.RegisterType((*BroadcastResponse)(nil), "plaza.BroadcastResponse")
 	proto.RegisterType((*ChatMessageResponse)(nil), "plaza.ChatMessageResponse")
 }
 
@@ -120,17 +192,20 @@ func init() {
 }
 
 var fileDescriptor_6dbb860360517e92 = []byte{
-	// 151 bytes of a gzipped FileDescriptorProto
+	// 200 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2e, 0xc8, 0x49, 0xac,
-	0x4a, 0xd4, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x05, 0x73, 0x94, 0xf4, 0xb8, 0x84, 0x9c,
-	0x33, 0x12, 0x4b, 0x7c, 0x53, 0x8b, 0x8b, 0x13, 0xd3, 0x53, 0x83, 0x52, 0x0b, 0x4b, 0x53, 0x8b,
-	0x4b, 0x84, 0x24, 0xb8, 0xd8, 0x93, 0xf3, 0xf3, 0x4a, 0x52, 0xf3, 0x4a, 0x24, 0x18, 0x15, 0x18,
-	0x35, 0x38, 0x83, 0x60, 0x5c, 0x25, 0x67, 0x2e, 0x61, 0x14, 0xf5, 0xc5, 0x05, 0xf9, 0x79, 0xc5,
-	0xa9, 0x42, 0x42, 0x5c, 0x2c, 0x79, 0x89, 0xb9, 0xa9, 0x50, 0xd5, 0x60, 0x36, 0xb2, 0x21, 0x4c,
-	0x28, 0x86, 0x18, 0x79, 0x73, 0xb1, 0x06, 0x80, 0x6c, 0x17, 0x72, 0xe2, 0x62, 0x75, 0xcd, 0x2b,
-	0x29, 0xaa, 0x14, 0x92, 0xd4, 0x83, 0xb8, 0x0d, 0xd3, 0x2d, 0x52, 0x52, 0xd8, 0xa4, 0x20, 0xd6,
-	0x6a, 0x30, 0x1a, 0x30, 0x26, 0xb1, 0x81, 0xfd, 0x63, 0x0c, 0x08, 0x00, 0x00, 0xff, 0xff, 0x95,
-	0xc3, 0x65, 0x77, 0xde, 0x00, 0x00, 0x00,
+	0x4a, 0xd4, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x05, 0x73, 0x94, 0xf8, 0xb8, 0x78, 0x5c,
+	0xf3, 0x4a, 0x8a, 0x2a, 0x83, 0x52, 0x0b, 0x4b, 0x53, 0x8b, 0x4b, 0x94, 0xf4, 0xb8, 0x84, 0x9c,
+	0x33, 0x12, 0x4b, 0x7c, 0x53, 0x8b, 0x8b, 0x13, 0xd3, 0x53, 0xa1, 0xa2, 0x42, 0x12, 0x5c, 0xec,
+	0xc9, 0xf9, 0x79, 0x25, 0xa9, 0x79, 0x25, 0x12, 0x8c, 0x0a, 0x8c, 0x1a, 0x9c, 0x41, 0x30, 0xae,
+	0x92, 0x2e, 0x97, 0xa0, 0x53, 0x51, 0x7e, 0x62, 0x4a, 0x72, 0x62, 0x71, 0x49, 0x50, 0x6a, 0x71,
+	0x41, 0x7e, 0x5e, 0x71, 0x2a, 0x48, 0x79, 0x2e, 0xc4, 0x00, 0x98, 0x72, 0x28, 0x57, 0xc9, 0x99,
+	0x4b, 0x18, 0xc5, 0x78, 0xa8, 0x06, 0x21, 0x2e, 0x96, 0xbc, 0xc4, 0x5c, 0x98, 0x6a, 0x30, 0x1b,
+	0xd9, 0x4e, 0x26, 0x14, 0x3b, 0x8d, 0x5a, 0x19, 0xb9, 0x58, 0x03, 0x40, 0xae, 0x17, 0xb2, 0xe2,
+	0x62, 0x05, 0xbb, 0x5e, 0x48, 0x58, 0x0f, 0xe2, 0x37, 0x64, 0xbf, 0x48, 0x49, 0x41, 0x05, 0xb1,
+	0xd8, 0x68, 0xc0, 0x28, 0xe4, 0xc0, 0xc5, 0x09, 0x77, 0xb9, 0x90, 0x24, 0x36, 0xa5, 0x10, 0x53,
+	0x24, 0xa0, 0x52, 0x18, 0xde, 0x4c, 0x62, 0x03, 0x87, 0xa4, 0x31, 0x20, 0x00, 0x00, 0xff, 0xff,
+	0xae, 0x23, 0xee, 0xbc, 0x58, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -145,7 +220,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type PlazaClient interface {
-	Entry(ctx context.Context, opts ...grpc.CallOption) (Plaza_EntryClient, error)
+	Entry(ctx context.Context, in *EntryRequest, opts ...grpc.CallOption) (Plaza_EntryClient, error)
+	Broadcast(ctx context.Context, in *ChatMessageRequest, opts ...grpc.CallOption) (*BroadcastResponse, error)
 }
 
 type plazaClient struct {
@@ -156,27 +232,28 @@ func NewPlazaClient(cc grpc.ClientConnInterface) PlazaClient {
 	return &plazaClient{cc}
 }
 
-func (c *plazaClient) Entry(ctx context.Context, opts ...grpc.CallOption) (Plaza_EntryClient, error) {
+func (c *plazaClient) Entry(ctx context.Context, in *EntryRequest, opts ...grpc.CallOption) (Plaza_EntryClient, error) {
 	stream, err := c.cc.NewStream(ctx, &_Plaza_serviceDesc.Streams[0], "/plaza.Plaza/Entry", opts...)
 	if err != nil {
 		return nil, err
 	}
 	x := &plazaEntryClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
 	return x, nil
 }
 
 type Plaza_EntryClient interface {
-	Send(*ChatMessageRequest) error
 	Recv() (*ChatMessageResponse, error)
 	grpc.ClientStream
 }
 
 type plazaEntryClient struct {
 	grpc.ClientStream
-}
-
-func (x *plazaEntryClient) Send(m *ChatMessageRequest) error {
-	return x.ClientStream.SendMsg(m)
 }
 
 func (x *plazaEntryClient) Recv() (*ChatMessageResponse, error) {
@@ -187,17 +264,30 @@ func (x *plazaEntryClient) Recv() (*ChatMessageResponse, error) {
 	return m, nil
 }
 
+func (c *plazaClient) Broadcast(ctx context.Context, in *ChatMessageRequest, opts ...grpc.CallOption) (*BroadcastResponse, error) {
+	out := new(BroadcastResponse)
+	err := c.cc.Invoke(ctx, "/plaza.Plaza/Broadcast", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PlazaServer is the server API for Plaza service.
 type PlazaServer interface {
-	Entry(Plaza_EntryServer) error
+	Entry(*EntryRequest, Plaza_EntryServer) error
+	Broadcast(context.Context, *ChatMessageRequest) (*BroadcastResponse, error)
 }
 
 // UnimplementedPlazaServer can be embedded to have forward compatible implementations.
 type UnimplementedPlazaServer struct {
 }
 
-func (*UnimplementedPlazaServer) Entry(srv Plaza_EntryServer) error {
+func (*UnimplementedPlazaServer) Entry(req *EntryRequest, srv Plaza_EntryServer) error {
 	return status.Errorf(codes.Unimplemented, "method Entry not implemented")
+}
+func (*UnimplementedPlazaServer) Broadcast(ctx context.Context, req *ChatMessageRequest) (*BroadcastResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Broadcast not implemented")
 }
 
 func RegisterPlazaServer(s *grpc.Server, srv PlazaServer) {
@@ -205,12 +295,15 @@ func RegisterPlazaServer(s *grpc.Server, srv PlazaServer) {
 }
 
 func _Plaza_Entry_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(PlazaServer).Entry(&plazaEntryServer{stream})
+	m := new(EntryRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(PlazaServer).Entry(m, &plazaEntryServer{stream})
 }
 
 type Plaza_EntryServer interface {
 	Send(*ChatMessageResponse) error
-	Recv() (*ChatMessageRequest, error)
 	grpc.ServerStream
 }
 
@@ -222,24 +315,38 @@ func (x *plazaEntryServer) Send(m *ChatMessageResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *plazaEntryServer) Recv() (*ChatMessageRequest, error) {
-	m := new(ChatMessageRequest)
-	if err := x.ServerStream.RecvMsg(m); err != nil {
+func _Plaza_Broadcast_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChatMessageRequest)
+	if err := dec(in); err != nil {
 		return nil, err
 	}
-	return m, nil
+	if interceptor == nil {
+		return srv.(PlazaServer).Broadcast(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/plaza.Plaza/Broadcast",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PlazaServer).Broadcast(ctx, req.(*ChatMessageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Plaza_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "plaza.Plaza",
 	HandlerType: (*PlazaServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Broadcast",
+			Handler:    _Plaza_Broadcast_Handler,
+		},
+	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "Entry",
 			Handler:       _Plaza_Entry_Handler,
 			ServerStreams: true,
-			ClientStreams: true,
 		},
 	},
 	Metadata: "plaza.proto",
