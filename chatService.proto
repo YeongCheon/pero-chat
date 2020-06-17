@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package plaza;
+
+import "google/protobuf/timestamp.proto";
+
+service Plaza {
+  rpc Entry(EntryRequest) returns (stream ChatMessageResponse);
+  rpc Broadcast(ChatMessageRequest) returns (BroadcastResponse);
+}
+
+message User {
+  string id = 1;
+  string name = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message Room {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+
+message EntryRequest {
+  string room_id = 1;
+}
+
+message ChatMessageRequest {
+  string room_id = 1;
+  string message = 2;
+}
+
+message BroadcastResponse {
+  string message = 1;
+  Room room = 2;
+}
+
+message ChatMessageResponse {
+  enum MessageType {
+	SYSTEM_JOIN_NEW_USER = 0;
+	SYSTEM_LEAVE_USER = 1;
+	COMMON_MESSAGE =2;
+  }
+
+  MessageType message_type = 1;
+  oneof Payload {
+	System_JoinNewUser system_join_new_user = 2;
+	System_LeaveUser system_leave_user  = 3;
+	CommonMessage common_message = 4;
+  }
+}
+
+message System_JoinNewUser {
+  User user = 1;
+  Room room = 2;
+  string message = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+
+message System_LeaveUser {
+  User user = 1;
+  Room room = 2;
+  string message = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+
+message CommonMessage {
+  string id = 1;
+  User user = 2;
+  string message = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
