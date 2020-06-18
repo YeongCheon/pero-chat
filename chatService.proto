@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package plaza;
+package pero;
 
 import "google/protobuf/timestamp.proto";
 
-service Plaza {
+service Pero {
   rpc Entry(EntryRequest) returns (stream ChatMessageResponse);
   rpc Broadcast(ChatMessageRequest) returns (BroadcastResponse);
 }
