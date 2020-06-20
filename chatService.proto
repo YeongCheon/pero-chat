@@ -4,7 +4,7 @@ package pero;
 
 import "google/protobuf/timestamp.proto";
 
-service Pero {
+service ChatService {
   rpc Entry(EntryRequest) returns (stream ChatMessageResponse);
   rpc Broadcast(ChatMessageRequest) returns (BroadcastResponse);
 }
